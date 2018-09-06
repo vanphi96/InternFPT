@@ -1,0 +1,18 @@
+﻿using Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Service.Interface
+{
+   public interface ICategoryService
+    {
+        byte Create(category category);
+        bool Delete(int id);
+        List<category> GetAll();
+        category GetByID(int id);
+        bool Update(category category);
+    }
+}
