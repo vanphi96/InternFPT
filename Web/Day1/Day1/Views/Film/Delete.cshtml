@@ -1,0 +1,136 @@
+﻿@model Model.film
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>film</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.release_year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.release_year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rental_duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rental_duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rental_rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rental_rate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.replacement_cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.replacement_cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.special_features)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.special_features)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_update)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_update)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.language.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.language.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.language1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.language1.name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

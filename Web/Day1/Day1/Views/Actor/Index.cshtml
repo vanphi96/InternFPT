@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Model.actor>
+@using PagedList.Mvc
+@using PagedList
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Actor</h2>
+@*
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.first_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.last_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.last_update)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_update)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.actor_id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.actor_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.actor_id })
+            </td>
+        </tr>
+    }
+
+    </table>
+*@
+<form action="/actor/index" method="get">
+    <div>
+        <input type="search" id="mySearch" name="name">
+        <button>Search</button>
+    </div>
+</form>
+<div class="container padding">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3" style="margin-top:30px">
+                <div>
+                    <a href="/Actor/Details/@item.actor_id"> <img src="/Image/actor/@(!string.IsNullOrEmpty(item.image)?item.image:"defaul.jpg") " style="height:260px; width:176px" /></a>
+
+                    <div><h3 class="inlineblock">@item.first_name @item.last_name</h3></div>
+                    @*<div> <h5 class="inlineblock">Thể loại: </h5><span>@item.special_features</span></div>
+                        <div><h5 class="inlineblock">Thời lượng: </h5><span>@item.length phút</span></div>
+                        <div><h5 class="inlineblock">Khởi chiếu: </h5><span>@item.release_year</span></div>*@
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))

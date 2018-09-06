@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Model.film>
+@using PagedList.Mvc
+@using PagedList
+@{
+    ViewBag.Title = "Index";
+
+
+}
+
+@*
+    <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.release_year)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rental_duration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rental_rate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.length)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.replacement_cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rating)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.special_features)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.last_update)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.url)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.language.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.language1.name)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.release_year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rental_duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rental_rate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.length)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.replacement_cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.special_features)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.last_update)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.url)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.language.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.language1.name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.film_id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.film_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.film_id })
+                </td>
+            </tr>
+        }
+
+        </table>
+*@
+<form action="/film/index" method="get" style="margin:20px">
+    <div>
+        <input type="search" id="mySearch" name="name">
+        <button>Search</button>
+    </div>
+</form>
+<div class="container padding">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3" style="padding:30px">
+                <div class="film">
+                    <a href="/Film/Details/@item.film_id"> <img src="/Image/@(!string.IsNullOrEmpty(item.image)?item.image:"film2.jpg") " style="height:260px; width:176px" /></a>
+
+                    <div><h2 class="inlineblock">@item.title</h2></div>
+                    <div> <h5 class="inlineblock">Thể loại: </h5><span>@(string.Join(",", item.film_category.Select(c => c.category.name)))</span></div>
+                    <div><h5 class="inlineblock">Thời lượng: </h5><span>@item.length phút</span></div>
+                    <div><h5 class="inlineblock">Khởi chiếu: </h5><span>@item.release_year</span></div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Model.customer>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.first_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.last_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.create_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.last_update)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address.address1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.store.store_id)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.create_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_update)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address.address1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.store.store_id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.customer_id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.customer_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.customer_id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

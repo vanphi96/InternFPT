@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7b27f234e5b1450b9313b9f50ceaf7eb" Name="Diagram1" ZoomLevel="155">
+        <EntityTypeShape EntityType="sakilaModel.account" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.actor" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.address" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.category" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.city" Width="1.5" PointX="1.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.comment" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.country" Width="1.5" PointX="1.5" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.customer" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.film" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.film_actor" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.film_category" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.film_text" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.inventory" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.language" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.payment" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.rental" Width="1.5" PointX="10.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.staff" Width="1.5" PointX="1.5" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.store" Width="1.5" PointX="0.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.Tranee" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.MSreplication_options" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.spt_fallback_db" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.spt_fallback_dev" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.spt_fallback_usg" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.spt_monitor" Width="1.5" PointX="5.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.spt_values" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.customer_list" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.film_list" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.sales_by_film_category" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.sales_by_store" Width="1.5" PointX="11.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sakilaModel.staff_list" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <AssociationConnector Association="sakilaModel.fk_film_actor_actor" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_address_city" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_customer_address" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_staff_address" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_store_address" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_film_category_category" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_city_country" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.FK__comment__film_id__7C3A67EB" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.FK__comment__film_id__7D2E8C24" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_customer_store" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_payment_customer" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_rental_customer" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_film_actor_film" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_film_category_film" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_film_language" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_film_language_original" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_inventory_film" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_inventory_store" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_rental_inventory" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_payment_rental" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_payment_staff" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_rental_staff" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_staff_store" ManuallyRouted="false" />
+        <AssociationConnector Association="sakilaModel.fk_store_staff" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

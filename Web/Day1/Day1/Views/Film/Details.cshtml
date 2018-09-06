@@ -1,0 +1,298 @@
+﻿@model Model.film
+@using Model
+@using Service
+@using Service.Interface
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    IActorService actorService = new ActorService();
+    ICommentService commentService = new CommentService();
+    IFilmService filmService = new FilmService();
+    var session = (customer)Session["loggeduser"];
+    int? rating = null;
+    if (session != null)
+    {
+        var comment = Model.comments.FirstOrDefault(c => c.customer_id == session.customer_id && c.rating != null);
+        if (comment != null)
+        {
+            rating = comment.rating;
+        }
+    }
+    var lstActor = actorService.GetActorsFilm(Model.film_id);
+    var lstComment = commentService.GetCommentFilm(Model.film_id);
+    int filmRating = filmService.Rating(Model.film_id);
+}
+@*<h2>Details</h2>
+
+    <div>
+        <h4>film</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.release_year)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.release_year)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.rental_duration)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.rental_duration)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.rental_rate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.rental_rate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.length)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.length)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.replacement_cost)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.replacement_cost)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.rating)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.rating)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.special_features)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.special_features)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.last_update)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.last_update)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.image)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.image)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.url)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.url)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.language.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.language.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.language1.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.language1.name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.film_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+
+<div class="container">
+    <h4>Nội dung phim</h4>
+    <hr />
+    <div class="row">
+        <div class=" col-md-3">
+            <img src="~/Image/@(!string.IsNullOrEmpty(Model.image) ? Model.image : "film2.jpg")" style="max-height:300px;max-width:200px" />
+            <div class="rating2" style="margin-top:16px">
+                @for (int i = 0; i < 5 - filmRating; i++)
+                {
+                    <span><input type="radio" id="str5" value="5"><label for="str5"></label></span>
+
+                }
+                @for (int i = 0; i < filmRating; i++)
+                {
+                    <span><input type="radio" id="str5" value="5" ><label for="str5" style="background:#F90"></label></span>
+                }
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h3>@Model.title</h3>
+            <p style="font-weight:bold">Đạo diễn: </p><span></span>
+            <p style="font-weight:bold">Diễn viên: @(string.Join(",", Model.film_actor.Select(c => c.actor.first_name)))</p><span></span>
+            <p style="margin-bottom:50px; font-weight:bold">Thể loại: @(string.Join(",", Model.film_category.Select(c => c.category.name)))</p><span></span>
+            <iframe width="560" height="315" src=@(!string.IsNullOrEmpty(Model.url) ? Model.url : "https://www.youtube.com/embed/y3ppYmy_1Qo") frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        </div>
+        @if (!string.IsNullOrEmpty(Model.description))
+        {
+            <div class="col-md-12">
+                <h2 style="font-weight:bold; color:brown; margin-top:20px; margin-bottom:20px">Mô tả</h2>
+            </div>
+            <div class="col-md-12">
+                <p style="font:200; font-size:20px">  @Html.Raw(Server.HtmlDecode(Model.description))</p>
+            </div>
+        }
+
+        <div class="col-md-12">
+            <h2 style="font-weight:bold; color:brown; margin-top:50px; margin-bottom:20px">Các diễn viên chính</h2>
+        </div>
+        @foreach (var item in lstActor)
+        {
+            <div class="col-md-3" style="margin-top:30px">
+                <div>
+                    <a href="/Actor/Details/@item.actor_id"> <img src="/Image/actor/@(!string.IsNullOrEmpty(item.image) ? item.image : "defaul.jpg") " style="height:260px; width:176px" /></a>
+
+                    <div><h3 class="inlineblock">@item.first_name @item.last_name</h3></div>
+                    @*<div> <h5 class="inlineblock">Thể loại: </h5><span>@item.special_features</span></div>
+                    <div><h5 class="inlineblock">Thời lượng: </h5><span>@item.length phút</span></div>
+                    <div><h5 class="inlineblock">Khởi chiếu: </h5><span>@item.release_year</span></div>*@
+
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 style="font-weight:bold; color:brown; margin-top:50px; margin-bottom:20px">Phim cùng thể loại </h2>
+        </div>
+        @{
+            int dem = 0;
+        }
+        @foreach (var item in filmService.GetFilmCategory(Model.film_id))
+        {
+            if (dem == 4)
+            {
+                break;
+            }
+            <div class="col-md-3" style="padding:30px">
+                <div class="film">
+                    <a href="/Film/Details/@item.film_id"> <img src="/Image/@(!string.IsNullOrEmpty(item.image)?item.image:"film2.jpg") " style="height:260px; width:176px" /></a>
+                    <div><h2 class="inlineblock">@item.title</h2></div>
+                    <div> <h5 class="inlineblock">Thể loại:  @(string.Join(",", Model.film_category.Select(c => c.category.name)))</h5></div>
+                    <div><h5 class="inlineblock">Thời lượng: @item.length phút</h5></div>
+                    <div><h5 class="inlineblock">Khởi chiếu: @item.release_year</h5></div>
+
+                </div>
+            </div>
+            dem++;
+        }
+    </div>
+    <div class="col-md-12">
+        <h2 style="font-weight:bold; color:brown; margin-top:50px; margin-bottom:20px">Bình luận </h2>
+    </div>
+    <div class="row">
+        @foreach (var cmt in lstComment)
+        {
+            <div class="row" style="margin-left:16px">
+                <div class="col-md-3">
+                    <h3 style="font-weight:bold">@cmt.customer.first_name</h3>
+                    <h5>@cmt.datetime.ToString("dd/MM/yyyy h:mm tt")</h5>
+                    <h4>@cmt.content</h4>
+                </div>
+
+            </div>
+
+
+        }
+
+        @if (session != null)
+        {
+
+            <form action="/FeedBack/Create" method="post" style="margin-top:16px">
+
+                <div class="col-md-12">
+                    @if (rating == null)
+                    {
+                        <div class="rating">
+                            <span><input type="radio" name="rating" id="str5" value="5"><label for="str5"></label></span>
+                            <span><input type="radio" name="rating" id="str4" value="4"><label for="str4"></label></span>
+                            <span><input type="radio" name="rating" id="str3" value="3"><label for="str3"></label></span>
+                            <span><input type="radio" name="rating" id="str2" value="2"><label for="str2"></label></span>
+                            <span><input type="radio" name="rating" id="str1" value="1"><label for="str1"></label></span>
+                        </div>
+                    }
+                    <input type="hidden" name="customer_id" value="@session.customer_id" />
+                    <input type="hidden" name="film_id" value="@Model.film_id" />
+                    <input type="hidden" name="datetime" value="@DateTime.Now" />
+                    <input type="text" name="content" height="200" />
+                    <input type="submit" value="Send" />
+                </div>
+            </form>
+
+        }
+
+
+    </div>
+
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Check Radio-box
+        $(".rating input:radio").attr("checked", false);
+
+        $('.rating input').click(function () {
+            $(".rating span").removeClass('checked');
+            $(this).parent().addClass('checked');
+        });
+
+        $('input:radio').change(
+            function () {
+                var userRating = this.value;
+                //alert(userRating);
+            });
+    });
+</script>

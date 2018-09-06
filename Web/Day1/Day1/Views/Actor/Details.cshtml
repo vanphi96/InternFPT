@@ -1,0 +1,85 @@
+﻿@model Model.actor
+@using Service;
+@{
+    ViewBag.Title = "Details";
+    IFilmService filmService = new FilmService();
+}
+
+<h2>Details</h2>
+
+@*<div>
+    <h4>actor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.first_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_update)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_update)
+        </dd>
+
+    </dl>
+</div>*@
+
+
+<div class="container">
+    <h4>Thông tin diễn viên</h4>
+    <hr />
+    <div class="row">
+        <div class=" col-md-3">
+            <img src="~/Image/actor/@Model.image" style="max-height:300px;max-width:200px" />
+        </div>
+        <div class="col-md-7">
+            <h3>@Model.first_name @Model.last_name</h3>
+            <p>Các phim tham gia: @(string.Join(",", Model.film_actor.Select(c => c.film.title)))</p>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 style="font-weight:bold; color:brown; margin-top:50px; margin-bottom:20px">Phim tham gia </h2>
+        </div>
+        @{
+            int dem = 0;
+        }
+        @foreach (var item in filmService.GetFilmActor(Model.actor_id))
+        {
+            if (dem == 4)
+            {
+                break;
+            }
+            <div class="col-md-3" style="padding:30px">
+                <div class="film">
+                    <a href="/Film/Details/@item.film_id"> <img src="/Image/@(!string.IsNullOrEmpty(item.image)?item.image:"film2.jpg") " style="height:260px; width:176px" /></a>
+                    <div><h2 class="inlineblock">@item.title</h2></div>
+                    <div> <h5 class="inlineblock">Thể loại: </h5><span>@item.special_features</span></div>
+                    <div><h5 class="inlineblock">Thời lượng: </h5><span>@item.length phút</span></div>
+                    <div><h5 class="inlineblock">Khởi chiếu: </h5><span>@item.release_year</span></div>
+
+                </div>
+            </div>
+            dem++;
+        }
+    </div>
+</div>
+<p style="margin:24px">
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.actor_id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

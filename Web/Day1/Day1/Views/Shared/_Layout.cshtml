@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @using Model
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{
+        var session = (customer)Session["loggeduser"];
+    }
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @* @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+            <div class="navbar-collapse collapse dn_menu">
+                <ul class="nav navbar-nav">
+                    <li><a class="pointer" href="http://localhost:54891/">Trang Chủ</a></li>
+                    <li><a class="pointer" href="http://localhost:54891/Film/Index">Phim</a></li>
+                    <li><a class="pointer" href="http://localhost:54891/Actor/Index">Diễn viên</a></li>
+                    <li><a class="pointer" href="#">Lịch Chiếu</a></li>
+                    <li><a class="pointer" href="#">Khuyến Mãi</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @{
+                            if (session != null)
+                            {
+                                <a href="/Account/LogOff">@session.first_name</a>
+                            }
+                            else
+                            {
+                                <a href="http://localhost:54891/Account/Login">Đăng Nhập</a>
+                            }
+                        }
+                    </li>
+                    <li><a href="http://localhost:54891/Customer/Create">Đăng Ký</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

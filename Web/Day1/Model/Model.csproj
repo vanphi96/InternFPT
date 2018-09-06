@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E66F3010-4764-42B7-9EF6-0B341595C197}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="account.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountModel.cs" />
+    <Compile Include="actor.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="address.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="category.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="city.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="comment.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComplexType1.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="country.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="customer.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="customer_list.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="film.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="film_actor.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="film_category.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="film_list.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="film_text.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="inventory.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="language.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MSreplication_options.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="payment.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rental.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SakilaDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SakilaDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SakilaDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SakilaDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SakilaDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sales_by_film_category.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sales_by_store.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spt_fallback_db.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spt_fallback_dev.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spt_fallback_usg.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spt_monitor.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spt_values.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="staff.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="staff_list.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="store.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tranee.cs">
+      <DependentUpon>SakilaDB.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="SakilaDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SakilaDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="SakilaDB.edmx.diagram">
+      <DependentUpon>SakilaDB.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SakilaDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SakilaDB.Context.cs</LastGenOutput>
+      <DependentUpon>SakilaDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="SakilaDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SakilaDB.edmx</DependentUpon>
+      <LastGenOutput>SakilaDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
