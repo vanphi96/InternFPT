@@ -1,0 +1,156 @@
+﻿@model Model.film
+@using Model
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    sakilaDB contex = new sakilaDB();
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm(Html.BeginForm("Create", "Films", FormMethod.Post, new { enctype = "multipart/form-data" })))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>film</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Title</label>
+            <div class="col-md-10">
+                <input type="text" name="title" class="form-control text-danger" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label class="control-label col-md-2">Description</label>
+            <div class="col-md-10">
+                <textarea type="text" cols="50" rows="10" name="description" class="form-control"></textarea>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Release year</label>
+            <div class="col-md-10">
+                <input type="text" name="release_year" class="form-control text-danger" />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Language</label>
+
+            <div class="col-md-10">
+                <select name="language_id" class="form-control" id="language_id">
+                    @foreach (var item in contex.languages)
+                    {
+                        <option value="@item.language_id">@item.name</option>
+                    }
+
+                </select>
+             
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Origina Language</label>
+            <div class="col-md-10">
+                <select name="original_language_id" class="form-control" id="original_language_id">
+                    @foreach (var item in contex.languages)
+                    {
+                        <option value="@item.language_id">@item.name</option>
+                    }
+
+                </select>
+                @*@Html.DropDownList("original_language_id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.original_language_id, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Rental Duration</label>
+
+            <div class="col-md-10">
+                <input type="number" name="rental_duration" class="form-control text-box single-line" min="1" max="5" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Rental Rate</label>
+
+            <div class="col-md-10">
+                <input type="tel" name="rental_rate" class="form-control text-danger" min="0" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Length</label>
+            <div class="col-md-10">
+                <input type="tel" name="length" class="form-control text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Replacement Cost</label>
+            <div class="col-md-10">
+                <input type="tel" name="replacement_cost" class="form-control text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Rating</label>
+            <div class="col-md-10">
+                <input type="tel" name="rating" class="form-control text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Special Features</label>
+            <div class="col-md-10">
+                <input type="tel" name="special_features" class="form-control text-danger" />
+            </div>
+        </div>
+        @*<div class="form-group">
+                <label class="control-label col-md-2">Last Update Features</label>
+                <div class="col-md-10">
+                    <input type="tel" name="special_features" class="form-control text-danger" />
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Url Trailer</label>
+            <div class="col-md-10">
+                <input type="text" name="url" class="form-control text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Image
+            </label>
+            <div class="col-md-10">
+                <input type="file" name="image" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+    @*<script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({ selector: 'textarea', encoding: "xml" });
+    </script>*@

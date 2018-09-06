@@ -1,0 +1,33 @@
+﻿@model Model.film
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="container">
+    <div class="row">
+        <div class=" col-md-3">
+            <img src="~/Image/@(!string.IsNullOrEmpty(Model.image) ? Model.image : "film2.jpg")" style="max-height:300px;max-width:200px" />
+        </div>
+        <div class="col-md-7">
+            <h3>@Model.title</h3>
+            <p style="font-weight:bold">Đạo diễn: </p><span></span>
+            <p style="font-weight:bold">Diễn viên: @(string.Join(",", Model.film_actor.Select(c => c.actor.first_name)))</p><span></span>
+            <p style="margin-bottom:50px; font-weight:bold">Thể loại: @(string.Join(",", Model.film_category.Select(c => c.category.name)))</p><span></span>
+            <iframe width="560" height="315" src=@(!string.IsNullOrEmpty(Model.url) ? Model.url : "https://www.youtube.com/embed/y3ppYmy_1Qo") frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        </div>
+        <div class="col-md-12">
+            <h2 style="font-weight:bold; color:brown; margin-bottom:20px">Mô tả</h2>
+        </div>
+        <div class="col-md-12">
+            <p style="font:200; font-size:20px">  @Html.Raw(Server.HtmlDecode(Model.description))</p>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.film_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

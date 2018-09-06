@@ -1,0 +1,26 @@
+﻿@model Model.actor
+
+@{
+    ViewBag.Title = "Details ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details Actor</h2>
+
+<div class="container">
+    <hr />
+    <div class="row">
+        <div class=" col-md-3">
+            <img src="~/Image/actor/@(!string.IsNullOrEmpty(Model.image)?Model.image:"defaul.jpg")" style="height:300px;width:200px" />
+        </div>
+        <div class="col-md-7">
+            <h3>@Model.first_name @Model.last_name</h3>
+            <p>Các phim tham gia: @(string.Join(",", Model.film_actor.Select(c => c.film.title)))</p>
+
+        </div>
+    </div>
+</div>
+<p style="margin-top:24px; margin-left:100px">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.actor_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

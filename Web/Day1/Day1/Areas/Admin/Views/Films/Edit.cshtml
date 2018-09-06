@@ -1,0 +1,146 @@
+﻿@model Model.film
+@using Model;
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    sakilaDB contex = new sakilaDB();
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Films", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>film</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.film_id)
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Title</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="title" name="title" type="text" value="@Model.title">
+            <span class="field-validation-valid text-danger" data-valmsg-for="title" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Description</label>
+        <div class="col-md-10">
+            <textarea type="text" cols="50" rows="10" name="description" class="form-control"></textarea>
+            <span class="field-validation-valid text-danger" data-valmsg-for="description" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Release year</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="release_year" name="release_year" type="text" value="@Model.release_year">
+            <span class="field-validation-valid text-danger" data-valmsg-for="release_year" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Language</label>
+        <div class="col-md-10">
+            <select class="form-control" id="language_id" name="language_id">
+                @foreach (var item in contex.languages)
+                {
+                    <option value="@item.language_id">@item.name</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Original Language</label>
+        <div class="col-md-10">
+            <select class="form-control" id="original_language_id" name="original_language_id">
+                @foreach (var item in contex.languages)
+                {
+                    <option value="@item.language_id">@item.name</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Rental Duration</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="rental_duration" name="rental_duration" type="text" value="@Model.rental_duration">
+            <span class="field-validation-valid text-danger" data-valmsg-for="rental_duration" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Rental Rate</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="rental_rate" name="rental_rate" type="text" value="@Model.rental_rate">
+            <span class="field-validation-valid text-danger" data-valmsg-for="rental_rate" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Length</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="length" name="length" type="text" value="@Model.length">
+            <span class="field-validation-valid text-danger" data-valmsg-for="length" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Replacement Cost</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="replacement_cost" name="replacement_cost" type="text" value="@Model.replacement_cost">
+            <span class="field-validation-valid text-danger" data-valmsg-for="replacement_cost" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Rating</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="rating" name="rating" type="text" value="@Model.rating">
+            <span class="field-validation-valid text-danger" data-valmsg-for="rating" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Special Features</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="special_features" name="special_features" type="text" value="@Model.special_features">
+            <span class="field-validation-valid text-danger" data-valmsg-for="url" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Url Trailer</label>
+        <div class="col-md-10">
+            <input type="text" name="url" class="form-control text-danger" value="@Model.url" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">
+            Image
+        </label>
+        <div class="col-md-10">
+            <input type="file" name="image" class="form-control" />
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.image, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

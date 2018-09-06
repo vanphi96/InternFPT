@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Model.film>
+@using PagedList.Mvc
+@using PagedList
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form action="/Admin/Films/Index" method="get">
+    <div>
+        <input type="search" id="mySearch" name="name">
+        <button>Search</button>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <th>
+           Title
+        </th>
+       
+        <th>
+            Release year
+        </th>
+        <th>
+            Rental Duration
+        </th>
+        <th>
+            Rental Rate
+        </th>
+        <th>
+            Length
+        </th>
+        <th>
+           Replacement Cost
+        </th>
+        <th>
+            Rating
+        </th>
+        <th>
+            Special Features
+        </th>
+        <th>
+           Last Update
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Url
+        </th>
+        <th>
+            Name Language
+        </th>
+        <th>
+            Name Language1
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @item.title
+        </td>
+        
+        <td>
+            @item.release_year
+        </td>
+        <td>
+            @item.rental_duration
+        </td>
+        <td>
+            @item.rental_rate
+        </td>
+        <td>
+            @item.length
+        </td>
+        <td>
+            @item.replacement_cost
+        </td>
+        <td>
+            @item.rating
+        </td>
+        <td>
+            @item.special_features
+        </td>
+        <td>
+            @item.last_update
+        </td>
+        <td>
+            <img src="~/Image/@(!string.IsNullOrEmpty(item.image)?item.image:"film2.jpg") " style="height:100px; width:70px" />
+          
+        </td>
+        <td>
+            @item.url
+        </td>
+        <td>
+            @item.language.name
+        </td>
+       
+        <td>
+            @if (item.language1 != null)
+            {
+                @item.language1.name
+            }
+         </td>
+        
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.film_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.film_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.film_id })
+        </td>
+    </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))

@@ -1,0 +1,14 @@
+D:\Thuc tap\13-07\Assignment1\Assignment1\bin\Debug\Assignment1.exe.config
+D:\Thuc tap\13-07\Assignment1\Assignment1\bin\Debug\Assignment1.exe
+D:\Thuc tap\13-07\Assignment1\Assignment1\bin\Debug\Assignment1.pdb
+D:\Thuc tap\13-07\Assignment1\Assignment1\obj\Debug\Assignment1.csprojAssemblyReference.cache
+D:\Thuc tap\13-07\Assignment1\Assignment1\obj\Debug\Assignment1.csproj.CoreCompileInputs.cache
+D:\Thuc tap\13-07\Assignment1\Assignment1\obj\Debug\Assignment1.exe
+D:\Thuc tap\13-07\Assignment1\Assignment1\obj\Debug\Assignment1.pdb
+D:\Thuc tap\13-07\Assignment1_PhiLV1\Assignment1\bin\Debug\Assignment1.exe.config
+D:\Thuc tap\13-07\Assignment1_PhiLV1\Assignment1\bin\Debug\Assignment1.exe
+D:\Thuc tap\13-07\Assignment1_PhiLV1\Assignment1\bin\Debug\Assignment1.pdb
+D:\Thuc tap\13-07\Assignment1_PhiLV1\Assignment1\obj\Debug\Assignment1.csprojAssemblyReference.cache
+D:\Thuc tap\13-07\Assignment1_PhiLV1\Assignment1\obj\Debug\Assignment1.csproj.CoreCompileInputs.cache
+D:\Thuc tap\13-07\Assignment1_PhiLV1\Assignment1\obj\Debug\Assignment1.exe
+D:\Thuc tap\13-07\Assignment1_PhiLV1\Assignment1\obj\Debug\Assignment1.pdb

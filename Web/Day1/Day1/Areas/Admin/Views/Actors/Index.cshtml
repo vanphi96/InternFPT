@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Model.actor>
+@using PagedList.Mvc
+@using PagedList
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form action="/Admin/Actors/Index" method="get">
+    <div>
+        <input type="search" id="mySearch" name="name">
+        <button>Search</button>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <td>
+            First Name
+        </td>
+        <td>
+            Last Name
+        </td>
+        <td>
+            Last Update
+        </td>
+        <td>
+            Image
+        </td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                 @item.first_name
+            </td>
+            <td>
+                @item.last_name
+            </td>
+            <td>
+                @item.last_update
+            </td>
+            <td>
+                <img src="~/Image/actor/@(!string.IsNullOrEmpty(item.image)?item.image:"defaul.jpg") " style="height:100px; width:70px"/>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.actor_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.actor_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.actor_id })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
