@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using LoginGoogle.Models;
+using Service;
+using Model;
 
 namespace LoginGoogle.Controllers
 {
@@ -17,9 +19,10 @@ namespace LoginGoogle.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+     
         public AccountController()
         {
+            
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -330,6 +333,12 @@ namespace LoginGoogle.Controllers
 
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+            //information information = new information();
+            //information.id = loginInfo.Login.ProviderKey;
+            //information.gmail = loginInfo.Email;
+            //information.username = loginInfo.DefaultUserName;
+            //_context.Insert(information);
+
             switch (result)
             {
                 case SignInStatus.Success:

@@ -1,0 +1,14 @@
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\bin\Debug\Repository.dll.config
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\bin\Debug\Repository.dll
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\bin\Debug\Repository.pdb
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\bin\Debug\EntityFramework.dll
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\bin\Debug\Model.dll
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\bin\Debug\Model.pdb
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\bin\Debug\Model.dll.config
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\bin\Debug\EntityFramework.xml
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\obj\Debug\Repository.csproj.CoreCompileInputs.cache
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\obj\Debug\Repository.csproj.CopyComplete
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\obj\Debug\Repository.dll
+E:\PhiLV setup\Pull Github\LoginGoogle\Repository\obj\Debug\Repository.pdb

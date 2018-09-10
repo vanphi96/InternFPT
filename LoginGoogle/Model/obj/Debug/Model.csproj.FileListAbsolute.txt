@@ -1,0 +1,11 @@
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\bin\Debug\Model.dll.config
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\bin\Debug\Model.dll
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\bin\Debug\Model.pdb
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\bin\Debug\EntityFramework.dll
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\bin\Debug\EntityFramework.xml
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\obj\Debug\Model.csproj.CopyComplete
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\obj\Debug\Model.dll
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\obj\Debug\Model.pdb
