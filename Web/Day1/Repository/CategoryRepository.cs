@@ -8,7 +8,7 @@ using Repository.Interface;
 namespace Repository
 {
     public class CategoryRepository : ICategoryRepository
-    {
+    {       
         private sakilaDB contex = new sakilaDB();
         public byte Create(category category)
         {
