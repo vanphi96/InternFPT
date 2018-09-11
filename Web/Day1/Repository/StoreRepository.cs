@@ -9,7 +9,7 @@ namespace Repository
 {
    public class StoreRepository : IStoreRepository
     {
-        private sakilaDB contex = new sakilaDB();
+        private sakilaEntities contex = new sakilaEntities();
         public int Create(store store)
         {
             contex.stores.Add(store);
@@ -42,7 +42,7 @@ namespace Repository
                 current.last_update = store.last_update;
                 current.manager_staff_id = store.manager_staff_id;
                 current.staff = store.staff;
-                current.staffs = store.staffs;
+                current.staff = store.staff;
                 return contex.SaveChanges() > 0;
             }
             return false;

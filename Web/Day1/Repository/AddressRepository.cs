@@ -10,7 +10,7 @@ namespace Repository
     
    public class AddressRepository : IAddressRepository
     {
-        private sakilaDB contex = new sakilaDB();
+        private sakilaEntities contex = new sakilaEntities();
         public int Create(address address)
         {
             contex.addresses.Add(address);

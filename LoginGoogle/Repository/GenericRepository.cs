@@ -19,11 +19,11 @@ namespace Repository
             _table = _db.Set<T>();
         }
 
-        public GenericRepository(LoginEntities db)
-        {
-            _db = db;
-            _table = _db.Set<T>();
-        }
+        //public GenericRepository(LoginEntities db)
+        //{
+        //    _db = db;
+        //    _table = _db.Set<T>();
+        //}
 
         public IEnumerable<T> SelectAll()
         {

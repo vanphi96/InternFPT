@@ -9,7 +9,7 @@ namespace Repository
 {
     public class LanguageRepository : ILanguageRepository
     {
-        private sakilaDB contex = new sakilaDB();
+        private sakilaEntities contex = new sakilaEntities();
         public int Create(language language)
         {
             contex.languages.Add(language);

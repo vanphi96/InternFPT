@@ -51,13 +51,19 @@
     <Compile Include="Class1.cs" />
     <Compile Include="GenericService.cs" />
     <Compile Include="IGenericService.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{2340161F-45DB-4F53-8D72-1A81F16320EF}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{B291A36C-C812-4604-8775-6BC15726B755}</Project>
       <Name>Repository</Name>

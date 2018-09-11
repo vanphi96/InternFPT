@@ -9,7 +9,7 @@ namespace Repository
 {
    public class CustomerRepository : ICustomerRepository
     {
-        private sakilaDB contex = new sakilaDB();
+        private sakilaEntities contex = new sakilaEntities();
         public int Create(customer customer)
         {
             contex.customers.Add(customer);

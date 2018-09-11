@@ -17,9 +17,9 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public customer()
         {
-            this.comments = new HashSet<comment>();
             this.payments = new HashSet<payment>();
             this.rentals = new HashSet<rental>();
+            this.comments = new HashSet<comment>();
         }
     
         public int customer_id { get; set; }
@@ -34,12 +34,12 @@ namespace Model
         public string password { get; set; }
     
         public virtual address address { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<comment> comments { get; set; }
         public virtual store store { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<payment> payments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<rental> rentals { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<comment> comments { get; set; }
     }
 }

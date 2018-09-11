@@ -10,7 +10,7 @@ namespace Repository
 {
     public class StaffRepository : IStaffRepository
     {
-        private sakilaDB contex = new sakilaDB();
+        private sakilaEntities contex = new sakilaEntities();
         public staff CheckLogin(string user, string password)
         {
             return contex.staffs.FirstOrDefault(x => x.username == user && x.password == password);
@@ -50,7 +50,6 @@ namespace Repository
             if (current != null)
             {
                 current.active = staff.active;
-                current.address = staff.address;
                 current.address_id = staff.address_id;
                 current.email = staff.email;
                 current.first_name = staff.first_name;
@@ -60,7 +59,6 @@ namespace Repository
                 current.payments = staff.payments;
                 current.picture = staff.picture;
                 current.rentals = staff.rentals;
-                current.store = staff.store;
                 current.stores = staff.stores;
                 current.store_id = staff.store_id;
                 current.username = staff.username;

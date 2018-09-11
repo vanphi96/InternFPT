@@ -11,6 +11,8 @@
     <AssemblyName>Model</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,7 +38,57 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.DTE.7.0.4\lib\net20\envdte.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EnvDTE80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\EnvDTE80.8.0.1\lib\net10\EnvDTE80.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.OLE.Interop.7.10.6070\lib\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.7.10.6071\lib\Microsoft.VisualStudio.Shell.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.10.0.10.0.30319\lib\Microsoft.VisualStudio.Shell.Interop.10.0.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.11.0, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.11.0.11.0.61030\lib\Microsoft.VisualStudio.Shell.Interop.11.0.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.12.0.12.0.30110\lib\Microsoft.VisualStudio.Shell.Interop.12.0.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.8.0.8.0.50727\lib\Microsoft.VisualStudio.Shell.Interop.8.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TemplateWizardInterface, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\VSSDK.TemplateWizardInterface.12.0.4\lib\net20\Microsoft.VisualStudio.TemplateWizardInterface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop.7.10.6070\lib\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop.8.0.8.0.50727\lib\Microsoft.VisualStudio.TextManager.Interop.8.0.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.VisualStudio, Version=4.8.0.6, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.VisualStudio.4.8.0\lib\net46\NuGet.VisualStudio.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\VSSDK.DTE.7.0.4\lib\net20\stdole.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -49,144 +101,124 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="account.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="AccountModel.cs" />
     <Compile Include="actor.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="address.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="category.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="city.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="comment.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ComplexType1.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="country.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="customer.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="customer_list.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="film.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="film_actor.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="film_category.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="film_list.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="film_text.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="inventory.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="language.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MSreplication_options.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="payment.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rental.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
-    <Compile Include="SakilaDB.Context.cs">
+    <Compile Include="Sakila.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SakilaDB.Context.tt</DependentUpon>
+      <DependentUpon>Sakila.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SakilaDB.cs">
+    <Compile Include="Sakila.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
-    <Compile Include="SakilaDB.Designer.cs">
+    <Compile Include="Sakila.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SakilaDB.edmx</DependentUpon>
+      <DependentUpon>Sakila.edmx</DependentUpon>
     </Compile>
     <Compile Include="sales_by_film_category.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="sales_by_store.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="spt_fallback_db.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="spt_fallback_dev.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="spt_fallback_usg.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="spt_monitor.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="spt_values.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="staff.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="staff_list.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
     <Compile Include="store.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
+      <DependentUpon>Sakila.tt</DependentUpon>
     </Compile>
-    <Compile Include="Tranee.cs">
-      <DependentUpon>SakilaDB.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="SakilaDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SakilaDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <EntityDeploy Include="Sakila.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Sakila.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="packages.config" />
-    <None Include="SakilaDB.edmx.diagram">
-      <DependentUpon>SakilaDB.edmx</DependentUpon>
+    <None Include="Sakila.edmx.diagram">
+      <DependentUpon>Sakila.edmx</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SakilaDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SakilaDB.Context.cs</LastGenOutput>
-      <DependentUpon>SakilaDB.edmx</DependentUpon>
-    </Content>
-    <Content Include="SakilaDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SakilaDB.edmx</DependentUpon>
-      <LastGenOutput>SakilaDB.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sakila.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Sakila.edmx</DependentUpon>
+      <LastGenOutput>Sakila.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Sakila.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Sakila.edmx</DependentUpon>
+      <LastGenOutput>Sakila.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\NuGet.VisualStudio.4.8.0\build\NuGet.VisualStudio.targets" Condition="Exists('..\packages\NuGet.VisualStudio.4.8.0\build\NuGet.VisualStudio.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NuGet.VisualStudio.4.8.0\build\NuGet.VisualStudio.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NuGet.VisualStudio.4.8.0\build\NuGet.VisualStudio.targets'))" />
+  </Target>
 </Project>

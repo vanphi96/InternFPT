@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using Repository.Interface;
+
 namespace Repository
 {
     public class CategoryRepository : ICategoryRepository
     {       
-        private sakilaDB contex = new sakilaDB();
+        private sakilaEntities contex = new sakilaEntities();
         public byte Create(category category)
         {
             contex.categories.Add(category);

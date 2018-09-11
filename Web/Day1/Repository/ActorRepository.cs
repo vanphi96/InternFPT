@@ -9,7 +9,7 @@ namespace Repository
 {
    public class ActorRepository : IActorRepository
     {
-        private sakilaDB contex = new sakilaDB();
+        private sakilaEntities contex = new sakilaEntities();
         public int Create(actor actor)
         {
             contex.actors.Add(actor);

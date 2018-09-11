@@ -18,7 +18,6 @@ namespace Model
         public address()
         {
             this.customers = new HashSet<customer>();
-            this.staffs = new HashSet<staff>();
             this.stores = new HashSet<store>();
         }
     
@@ -34,8 +33,6 @@ namespace Model
         public virtual city city { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<customer> customers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<staff> staffs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<store> stores { get; set; }
     }

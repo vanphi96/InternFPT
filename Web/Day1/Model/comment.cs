@@ -15,11 +15,11 @@ namespace Model
     public partial class comment
     {
         public int id { get; set; }
-        public int customer_id { get; set; }
-        public int film_id { get; set; }
-        public System.DateTime datetime { get; set; }
-        public Nullable<int> rating { get; set; }
+        public Nullable<int> film_id { get; set; }
+        public Nullable<System.DateTime> datetime { get; set; }
         public string content { get; set; }
+        public Nullable<int> rating { get; set; }
+        public Nullable<int> customer_id { get; set; }
     
         public virtual customer customer { get; set; }
         public virtual film film { get; set; }

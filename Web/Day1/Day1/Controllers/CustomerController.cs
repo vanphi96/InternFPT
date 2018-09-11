@@ -12,7 +12,7 @@ namespace Day1.Controllers
 {
     public class CustomerController : Controller
     {
-        private sakilaDB db = new sakilaDB();
+        private sakilaEntities db = new sakilaEntities();
 
         // GET: Customer
         public ActionResult Index()

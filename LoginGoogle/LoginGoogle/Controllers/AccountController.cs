@@ -19,7 +19,7 @@ namespace LoginGoogle.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-     
+        private IU<information> _context = new GenericService<information>();
         public AccountController()
         {
             
@@ -333,16 +333,20 @@ namespace LoginGoogle.Controllers
 
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
-            //information information = new information();
-            //information.id = loginInfo.Login.ProviderKey;
-            //information.gmail = loginInfo.Email;
-            //information.username = loginInfo.DefaultUserName;
-            //_context.Insert(information);
 
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        information information = new information();
+                        information.id = loginInfo.Login.ProviderKey;
+                        information.gmail = loginInfo.Email;
+                        information.username = loginInfo.DefaultUserName;
+                        _context.Insert(information);
+                        return RedirectToLocal(returnUrl);
+
+                    }
+                   
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

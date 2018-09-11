@@ -9,7 +9,7 @@ namespace Repository
 {
    public class FilmRepository : IFilmRepository
     {
-        private sakilaDB context = new sakilaDB();
+        private sakilaEntities context = new sakilaEntities();
         public int Create(film film)
         {
             context.films.Add(film);

@@ -18,5 +18,6 @@ namespace Model
         public string username { get; set; }
         public string gmail { get; set; }
         public string image { get; set; }
+        public Nullable<int> admin { get; set; }
     }
 }

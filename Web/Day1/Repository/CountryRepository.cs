@@ -9,7 +9,7 @@ namespace Repository
 {
     public class CountryRepository : ICountryRepository
     {
-        private sakilaDB contex = new sakilaDB();
+        private sakilaEntities contex = new sakilaEntities();
         public int Create(country country)
         {
             contex.countries.Add(country);

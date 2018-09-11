@@ -10,7 +10,7 @@ namespace Repository
 {
     public class CommentRepository : IComment
     {
-        private sakilaDB context = new sakilaDB();
+        private sakilaEntities context = new sakilaEntities();
 
         public int Create(comment comment)
         {

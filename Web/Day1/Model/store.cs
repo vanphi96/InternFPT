@@ -19,7 +19,6 @@ namespace Model
         {
             this.customers = new HashSet<customer>();
             this.inventories = new HashSet<inventory>();
-            this.staffs = new HashSet<staff>();
         }
     
         public int store_id { get; set; }
@@ -32,8 +31,6 @@ namespace Model
         public virtual ICollection<customer> customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<inventory> inventories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<staff> staffs { get; set; }
         public virtual staff staff { get; set; }
     }
 }

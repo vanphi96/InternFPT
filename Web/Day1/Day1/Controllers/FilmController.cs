@@ -20,7 +20,7 @@ namespace Day1.Controllers
         private ILanguageService languageService = new LanguageService();
         private const int PAGE_SIZE = 8;
         private ICommentService commentService = new CommentService();
-        private sakilaDB db = new sakilaDB();
+        private sakilaEntities db = new sakilaEntities();
         private film filmDetails = new film();
         public comment CreateComment(comment comment, film film, customer customer)
         {

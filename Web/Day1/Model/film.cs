@@ -17,10 +17,10 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public film()
         {
-            this.comments = new HashSet<comment>();
             this.film_actor = new HashSet<film_actor>();
             this.film_category = new HashSet<film_category>();
             this.inventories = new HashSet<inventory>();
+            this.comments = new HashSet<comment>();
         }
     
         public int film_id { get; set; }
@@ -40,8 +40,6 @@ namespace Model
         public string url { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<comment> comments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<film_actor> film_actor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<film_category> film_category { get; set; }
@@ -49,5 +47,7 @@ namespace Model
         public virtual language language1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<inventory> inventories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<comment> comments { get; set; }
     }
 }
