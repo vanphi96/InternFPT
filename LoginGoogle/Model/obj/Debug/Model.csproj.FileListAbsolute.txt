@@ -9,3 +9,4 @@ E:\PhiLV setup\Pull Github\LoginGoogle\Model\obj\Debug\Model.csproj.CoreCompileI
 E:\PhiLV setup\Pull Github\LoginGoogle\Model\obj\Debug\Model.csproj.CopyComplete
 E:\PhiLV setup\Pull Github\LoginGoogle\Model\obj\Debug\Model.dll
 E:\PhiLV setup\Pull Github\LoginGoogle\Model\obj\Debug\Model.pdb
+E:\PhiLV setup\Pull Github\LoginGoogle\Model\obj\Debug\Model.csprojAssemblyReference.cache

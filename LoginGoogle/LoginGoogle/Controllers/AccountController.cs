@@ -19,10 +19,10 @@ namespace LoginGoogle.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private IU<information> _context = new GenericService<information>();
+        private IGenericService<information> _context;
         public AccountController()
         {
-            
+            _context = new GenericService<information>();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -320,6 +320,7 @@ namespace LoginGoogle.Controllers
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
+       
         //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
@@ -338,11 +339,13 @@ namespace LoginGoogle.Controllers
             {
                 case SignInStatus.Success:
                     {
+                       
                         information information = new information();
                         information.id = loginInfo.Login.ProviderKey;
                         information.gmail = loginInfo.Email;
                         information.username = loginInfo.DefaultUserName;
                         _context.Insert(information);
+                        _context.Save();
                         return RedirectToLocal(returnUrl);
 
                     }

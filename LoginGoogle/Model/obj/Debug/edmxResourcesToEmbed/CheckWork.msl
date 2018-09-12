@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="LoginModelStoreContainer" CdmEntityContainer="LoginEntities">
+  <EntityContainerMapping StorageEntityContainer="LoginModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="information">
       <EntityTypeMapping TypeName="LoginModel.information">
         <MappingFragment StoreEntitySet="information">
@@ -8,6 +8,7 @@
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="gmail" ColumnName="gmail" />
           <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="admin" ColumnName="admin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -13,10 +13,10 @@ namespace Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LoginEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public LoginEntities()
-            : base("name=LoginEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     

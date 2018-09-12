@@ -10,20 +10,20 @@ namespace Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected LoginEntities _db { get; set; }
+        protected Entities _db { get; set; }
         protected DbSet<T> _table = null;
 
         public GenericRepository()
         {
-            _db = new LoginEntities();
+            _db = new Entities();
             _table = _db.Set<T>();
         }
 
-        //public GenericRepository(LoginEntities db)
-        //{
-        //    _db = db;
-        //    _table = _db.Set<T>();
-        //}
+        public GenericRepository(Entities db)
+        {
+            _db = db;
+            _table = _db.Set<T>();
+        }
 
         public IEnumerable<T> SelectAll()
         {
