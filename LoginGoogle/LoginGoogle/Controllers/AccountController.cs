@@ -19,10 +19,10 @@ namespace LoginGoogle.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private IGenericService<information> _context;
+        private IGenericService<Information> _context;
         public AccountController()
         {
-            _context = new GenericService<information>();
+            _context = new GenericService<Information>();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -340,7 +340,7 @@ namespace LoginGoogle.Controllers
                 case SignInStatus.Success:
                     {
                        
-                        information information = new information();
+                        Information information = new Information();
                         information.id = loginInfo.Login.ProviderKey;
                         information.gmail = loginInfo.Email;
                         information.username = loginInfo.DefaultUserName;

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class UserRepository : IUserRepository, IGenericRepository<information>
+    public class UserRepository : IUserRepository, IGenericRepository<Information>
     {
-        private IGenericRepository<information> genericRepository = new GenericRepository<information>();
+        private IGenericRepository<Information> genericRepository = new GenericRepository<Information>();
          
         public int CheckUser(string email)
         {
@@ -30,7 +30,7 @@ namespace Repository
             genericRepository.Delete(id);
         }
 
-        public void Insert(information obj)
+        public void Insert(Information obj)
         {
             genericRepository.Insert(obj);
         }
@@ -40,17 +40,17 @@ namespace Repository
             genericRepository.Save();
         }
 
-        public IEnumerable<information> SelectAll()
+        public IEnumerable<Information> SelectAll()
         {
             return genericRepository.SelectAll();
         }
 
-        public information SelectById(object id)
+        public Information SelectById(object id)
         {
             return genericRepository.SelectById(id);
         }
 
-        public void Update(information obj)
+        public void Update(Information obj)
         {
             genericRepository.Update(obj);
         }

@@ -4,22 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LoginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LoginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Login.dbo.information' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="information">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="id" Type="nvarchar" MaxLength="200" />
           <Property Name="username" Type="nvarchar" MaxLength="50" />
-          <Property Name="gmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="gmail" Type="nvarchar" MaxLength="50" />
           <Property Name="image" Type="nvarchar" MaxLength="255" />
           <Property Name="admin" Type="int" />
-        </EntityType>
-        <EntityContainer Name="LoginModelStoreContainer">
-          <EntitySet Name="information" EntityType="Self.information" Schema="dbo" store:Type="Tables" />
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+        </EntityType>-->
+        <EntityContainer Name="LoginModelStoreContainer" />
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LoginModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -42,17 +38,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LoginModelStoreContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="information">
-            <EntityTypeMapping TypeName="LoginModel.information">
-              <MappingFragment StoreEntitySet="information">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="gmail" ColumnName="gmail" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="admin" ColumnName="admin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

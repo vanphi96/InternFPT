@@ -87,130 +87,12 @@ namespace LoginLdap
         }
 
         
-        public void Login2()
-        {
-            string addServer = "LDAP://10.1.7.28/DC=vietis,DC=local";
-            string ldap_user = "admin";
-            string ldap_pass = "vietis@123";
-
-            string username = txt_user.Text;
-            string pass = txt_pass.Text;
-
-            //using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, null, addServer))
-            //{
-            //    // validate the credentials
-            //    bool isValid = pc.ValidateCredentials(ldap_user, ldap_pass);
-            //}
-
-            ArrayList listaPropiedades = new ArrayList();
-            using (DirectoryEntry directoryEntry = new DirectoryEntry(addServer, ldap_user, ldap_pass))
-            {
-                using (DirectorySearcher ds = new DirectorySearcher(directoryEntry))
-                {
-                    try
-                    {
-                      
-                        ds.Filter = "(sAMAccountName=" + username + ")";
-                      
-                        //string[] requiredProperties = new string[] { "givenname", "cn", "sn", "distinguishedName", "displayName", "name"};
-
-
-
-                        //SearchResultCollection all = ds.FindAll();
-                        //foreach (SearchResult item in all)
-                        //{
-                        //    ResultPropertyCollection propaa = item.Properties;
-                        //    foreach (string propname in propaa.PropertyNames)
-                        //    {
-                        //        foreach (Object collection in propaa[propname])
-                        //        {
-                        //            string straa = propname + " : " + collection.ToString();
-                        //            lb_infor.Items.Add(straa);
-                        //            information.Add(straa);
-
-
-                        //        }
-
-                        //    }
-                        //}
-                       // ds.PropertiesToLoad.Add("name");
-                        var result = ds.FindOne();
-                        StringBuilder str = new StringBuilder();
-                        ResultPropertyCollection prop = result.Properties;
-                        ICollection coll = prop.PropertyNames;
-                        IEnumerator enu = coll.GetEnumerator();
-                        while (enu.MoveNext())
-                        {
-                            str.Append(enu.Current + " = " + result.Properties[enu.Current.ToString()][0] + "\n");
-                        }
-                        //MessageBox.Show(str.ToString());
-                        //string _filterAttribute = (string)result.Properties["name"][0];
-                        //MessageBox.Show(_filterAttribute);
-                        //foreach (String property in requiredProperties)
-
-
-                        ResultPropertyCollection fields = result.Properties;
-
-                        string name = result.Properties["name"][0].ToString();
-                        using (DirectoryEntry directoryEntryUser = new DirectoryEntry(addServer, name, pass, AuthenticationTypes.None))
-                        {
-                          
-                            try
-                            {
-                                object nativeObject = directoryEntryUser.NativeObject;
-                                if (nativeObject != null)
-                                {
-                                    MessageBox.Show("Chào thằng em " + name);
-                                }
-                            }
-                            catch (Exception e)
-                            {
-
-                                MessageBox.Show("Pass sai em nhé");
-                            }
-                           
-                        }
-
-
-
-                        //    ds.PropertiesToLoad.Add("name");
-
-                        //SearchResultCollection all2 = ds.FindAll();
-                        //StringBuilder stringResult = new StringBuilder();
-                        //foreach (SearchResult item in all2)
-                        //{
-                        //    ResultPropertyCollection propaa = item.Properties;
-                        //    foreach (string propname in propaa.PropertyNames)
-                        //    {
-                        //        foreach (Object collection in propaa[propname])
-                        //        {
-                        //            string straa = propname + " : " + collection.ToString() + "\n";
-                        //            stringResult.Append(straa);
-                        //        }
-
-                        //    }
-                        //}
-                        //MessageBox.Show(stringResult.ToString());
-                    }
-                    catch (Exception e)
-                    {
-
-                       // MessageBox.Show(e.ToString());
-                    }
-                    
-                   
-                }
-            }
-
-
-            //return View();
-        }
-       
+      
         private void button1_Click(object sender, EventArgs e)
         {
             //userList();
             //acd();
-            Login2();
+           information= Ldap.Login2(txt_user,txt_pass,lb_infor);
         }
         void login(string nom, string pass)
         {
@@ -324,6 +206,11 @@ namespace LoginLdap
             {
                 lb_infor.Items.Add(item);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Ldap.CreateUser();
         }
     }
 }

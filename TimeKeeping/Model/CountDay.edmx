@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CountDayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateStart" Type="date" />
+          <Property Name="Admin" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CountDay.dbo.Quotation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Quotation">
+          <Key>
+            <PropertyRef Name="QuotationId" />
+          </Key>
+          <Property Name="QuotationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Conten" Type="nvarchar(max)" />
+          <Property Name="Author" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CountDay.dbo.TimeOfDay' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TimeOfDay">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="Time" Type="date" />
+          <Property Name="InOut" Type="bit" />
+        </EntityType>
+        <EntityType Name="WorkDay">
+          <Key>
+            <PropertyRef Name="WorkDayId" />
+          </Key>
+          <Property Name="WorkDayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="WorkMonthID" Type="int" Nullable="false" />
+          <Property Name="Day" Type="date" Nullable="false" />
+          <Property Name="HourLate" Type="float" Nullable="false" />
+          <Property Name="ComBackSoon" Type="float" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="WorkMonth">
+          <Key>
+            <PropertyRef Name="WorkMonthId" />
+          </Key>
+          <Property Name="WorkMonthId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SumWork" Type="int" Nullable="false" />
+          <Property Name="CeaseCause" Type="int" Nullable="false" />
+          <Property Name="CeaseNotCause" Type="int" Nullable="false" />
+          <Property Name="Moth" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__checktime__id_em__267ABA7A">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="TimeOfDay" Type="Self.TimeOfDay" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="TimeOfDay">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detailche__id_em__09DE7BCC">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="WorkDay" Type="Self.WorkDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="WorkDay">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detailche__id_mo__0AD2A005">
+          <End Role="WorkMonth" Type="Self.WorkMonth" Multiplicity="1" />
+          <End Role="WorkDay" Type="Self.WorkDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkMonth">
+              <PropertyRef Name="WorkMonthId" />
+            </Principal>
+            <Dependent Role="WorkDay">
+              <PropertyRef Name="WorkMonthID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CountDayModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkDay" EntityType="Self.WorkDay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkMonth" EntityType="Self.WorkMonth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quotation" EntityType="Self.Quotation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Quotation].[QuotationId] AS [QuotationId], 
+    [Quotation].[Conten] AS [Conten], 
+    [Quotation].[Author] AS [Author]
+    FROM [dbo].[Quotation] AS [Quotation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TimeOfDay" EntityType="Self.TimeOfDay" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TimeOfDay].[EmployeeId] AS [EmployeeId], 
+    [TimeOfDay].[Time] AS [Time], 
+    [TimeOfDay].[InOut] AS [InOut]
+    FROM [dbo].[TimeOfDay] AS [TimeOfDay]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__checktime__id_em__267ABA7A" Association="Self.FK__checktime__id_em__267ABA7A">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="TimeOfDay" EntitySet="TimeOfDay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detailche__id_em__09DE7BCC" Association="Self.FK__detailche__id_em__09DE7BCC">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="WorkDay" EntitySet="WorkDay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detailche__id_mo__0AD2A005" Association="Self.FK__detailche__id_mo__0AD2A005">
+            <End Role="WorkMonth" EntitySet="WorkMonth" />
+            <End Role="WorkDay" EntitySet="WorkDay" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CountDayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateStart" Type="DateTime" Precision="0" />
+          <Property Name="Admin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TimeOfDay" Relationship="Self.FK__checktime__id_em__267ABA7A" FromRole="Employee" ToRole="TimeOfDay" />
+          <NavigationProperty Name="WorkDays" Relationship="Self.FK__detailche__id_em__09DE7BCC" FromRole="Employee" ToRole="WorkDay" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="WorkDay">
+          <Key>
+            <PropertyRef Name="WorkDayId" />
+          </Key>
+          <Property Name="WorkDayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="WorkMonthID" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HourLate" Type="Double" Nullable="false" />
+          <Property Name="ComBackSoon" Type="Double" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__detailche__id_em__09DE7BCC" FromRole="WorkDay" ToRole="Employee" />
+          <NavigationProperty Name="WorkMonth" Relationship="Self.FK__detailche__id_mo__0AD2A005" FromRole="WorkDay" ToRole="WorkMonth" />
+        </EntityType>
+        <EntityType Name="WorkMonth">
+          <Key>
+            <PropertyRef Name="WorkMonthId" />
+          </Key>
+          <Property Name="WorkMonthId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SumWork" Type="Int32" Nullable="false" />
+          <Property Name="CeaseCause" Type="Int32" Nullable="false" />
+          <Property Name="CeaseNotCause" Type="Int32" Nullable="false" />
+          <Property Name="Moth" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="WorkDays" Relationship="Self.FK__detailche__id_mo__0AD2A005" FromRole="WorkMonth" ToRole="WorkDay" />
+        </EntityType>
+        <EntityType Name="Quotation">
+          <Key>
+            <PropertyRef Name="QuotationId" />
+          </Key>
+          <Property Name="QuotationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Conten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Author" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TimeOfDay">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Precision="0" />
+          <Property Name="InOut" Type="Boolean" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__checktime__id_em__267ABA7A" FromRole="TimeOfDay" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK__checktime__id_em__267ABA7A">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="TimeOfDay" Type="Self.TimeOfDay" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="TimeOfDay">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detailche__id_em__09DE7BCC">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="WorkDay" Type="Self.WorkDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="WorkDay">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detailche__id_mo__0AD2A005">
+          <End Role="WorkMonth" Type="Self.WorkMonth" Multiplicity="1" />
+          <End Role="WorkDay" Type="Self.WorkDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkMonth">
+              <PropertyRef Name="WorkMonthId" />
+            </Principal>
+            <Dependent Role="WorkDay">
+              <PropertyRef Name="WorkMonthID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="countDayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="WorkDays" EntityType="Self.WorkDay" />
+          <EntitySet Name="WorkMonths" EntityType="Self.WorkMonth" />
+          <EntitySet Name="Quotations" EntityType="Self.Quotation" />
+          <EntitySet Name="TimeOfDays" EntityType="Self.TimeOfDay" />
+          <AssociationSet Name="FK__checktime__id_em__267ABA7A" Association="Self.FK__checktime__id_em__267ABA7A">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="TimeOfDay" EntitySet="TimeOfDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detailche__id_em__09DE7BCC" Association="Self.FK__detailche__id_em__09DE7BCC">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="WorkDay" EntitySet="WorkDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detailche__id_mo__0AD2A005" Association="Self.FK__detailche__id_mo__0AD2A005">
+            <End Role="WorkMonth" EntitySet="WorkMonths" />
+            <End Role="WorkDay" EntitySet="WorkDays" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CountDayModelStoreContainer" CdmEntityContainer="countDayEntities">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CountDayModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CountDayModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkDays">
+            <EntityTypeMapping TypeName="CountDayModel.WorkDay">
+              <MappingFragment StoreEntitySet="WorkDay">
+                <ScalarProperty Name="WorkDayId" ColumnName="WorkDayId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="WorkMonthID" ColumnName="WorkMonthID" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="HourLate" ColumnName="HourLate" />
+                <ScalarProperty Name="ComBackSoon" ColumnName="ComBackSoon" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkMonths">
+            <EntityTypeMapping TypeName="CountDayModel.WorkMonth">
+              <MappingFragment StoreEntitySet="WorkMonth">
+                <ScalarProperty Name="WorkMonthId" ColumnName="WorkMonthId" />
+                <ScalarProperty Name="SumWork" ColumnName="SumWork" />
+                <ScalarProperty Name="CeaseCause" ColumnName="CeaseCause" />
+                <ScalarProperty Name="CeaseNotCause" ColumnName="CeaseNotCause" />
+                <ScalarProperty Name="Moth" ColumnName="Moth" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quotations">
+            <EntityTypeMapping TypeName="CountDayModel.Quotation">
+              <MappingFragment StoreEntitySet="Quotation">
+                <ScalarProperty Name="QuotationId" ColumnName="QuotationId" />
+                <ScalarProperty Name="Conten" ColumnName="Conten" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeOfDays">
+            <EntityTypeMapping TypeName="CountDayModel.TimeOfDay">
+              <MappingFragment StoreEntitySet="TimeOfDay">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="InOut" ColumnName="InOut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
