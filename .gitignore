@@ -259,3 +259,9 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/OOP/Contest1/BaiB/nbproject/private/
+/OOP/Contest1/BaiB/build/
+/OOP/Contest1/BaiC/nbproject/private/
+/OOP/Contest1/BaiC/build/
+/OOP/Contest1/BaiD/nbproject/private/
+/OOP/Contest1/BaiD/build/
