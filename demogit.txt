@@ -1,1 +1,3 @@
-a
+demo 2
+log a
+log b
